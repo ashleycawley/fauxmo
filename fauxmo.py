@@ -35,7 +35,7 @@ import sys
 import time
 import urllib
 import uuid
-
+import os
 
 
 # This XML is the minimum needed to define one of our virtual switches
@@ -366,10 +366,12 @@ class rest_api_handler(object):
 
     def on(self):
         r = requests.get(self.on_cmd)
+        os.system('echo "Triggered ON - `date`" > auto-log.txt')
         return r.status_code == 200
 
     def off(self):
         r = requests.get(self.off_cmd)
+        os.system('echo "Triggered OFF - `date`" > auto-log.txt')
         return r.status_code == 200
 
 
