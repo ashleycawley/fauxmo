@@ -366,12 +366,12 @@ class rest_api_handler(object):
 
     def on(self):
         r = requests.get(self.on_cmd)
-        os.system('echo "Triggered ON - `date`" >> auto-log.txt')
+        os.system('bash /home/pi/youtube.sh &') # & is essential to run script in the background and get immediate "OK" feedback from Alexa
         return r.status_code == 200
 
     def off(self):
         r = requests.get(self.off_cmd)
-        os.system('echo "Triggered OFF - `date`" >> auto-log.txt')
+        os.system('bash /home/pi/youtube-off.sh &') # & is essential to run script in the background and get immediate "OK" feedback from Alexa
         return r.status_code == 200
 
 
@@ -386,8 +386,8 @@ class rest_api_handler(object):
 # list will be used.
 
 FAUXMOS = [
-    ['office lights', rest_api_handler('http://192.168.5.4/ha-api?cmd=on&a=office', 'http://192.168.5.4/ha-api?cmd=off&a=office')],
-    ['kitchen lights', rest_api_handler('http://192.168.5.4/ha-api?cmd=on&a=kitchen', 'http://192.168.5.4/ha-api?cmd=off&a=kitchen')],
+        ['youtube', rest_api_handler('https://www.wikipedia.org/', 'https://www.wikipedia.org/')],
+        ['kitchen lights', rest_api_handler('https://1.1.1.1', 'https://1.1.1.1')],
 ]
 
 
