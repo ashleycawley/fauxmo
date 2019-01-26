@@ -359,19 +359,49 @@ class upnp_broadcast_responder(object):
 # This example class takes two full URLs that should be requested when an on
 # and off command are invoked respectively. It ignores any return data.
 
-class rest_api_handler(object):
+class monitors(object):
     def __init__(self, on_cmd, off_cmd):
         self.on_cmd = on_cmd
         self.off_cmd = off_cmd
 
     def on(self):
         r = requests.get(self.on_cmd)
-        os.system('bash /home/pi/youtube.sh &') # & is essential to run script in the background and get immediate "OK" feedback from Alexa
+        os.system('sudo /home/acawley/433MHz/433Utils/RPi_utils/codesend 4706319')
         return r.status_code == 200
 
     def off(self):
         r = requests.get(self.off_cmd)
-        os.system('bash /home/pi/youtube-off.sh &') # & is essential to run script in the background and get immediate "OK" feedback from Alexa
+        os.system('sudo /home/acawley/433MHz/433Utils/RPi_utils/codesend 4706311')
+        return r.status_code == 200
+
+class attic_fans(object):
+    def __init__(self, on_cmd, off_cmd):
+        self.on_cmd = on_cmd
+        self.off_cmd = off_cmd
+
+    def on(self):
+        r = requests.get(self.on_cmd)
+        os.system('sudo /home/acawley/433MHz/433Utils/RPi_utils/codesend 4706315')
+        return r.status_code == 200
+
+    def off(self):
+        r = requests.get(self.off_cmd)
+        os.system('sudo /home/acawley/433MHz/433Utils/RPi_utils/codesend 4706307')
+        return r.status_code == 200
+
+class landing_lamp(object):
+    def __init__(self, on_cmd, off_cmd):
+        self.on_cmd = on_cmd
+        self.off_cmd = off_cmd
+
+    def on(self):
+        r = requests.get(self.on_cmd)
+        os.system('sudo /home/acawley/433MHz/433Utils/RPi_utils/codesend 4706317')
+        return r.status_code == 200
+
+    def off(self):
+        r = requests.get(self.off_cmd)
+        os.system('sudo /home/acawley/433MHz/433Utils/RPi_utils/codesend 4706309')
         return r.status_code == 200
 
 
@@ -386,8 +416,9 @@ class rest_api_handler(object):
 # list will be used.
 
 FAUXMOS = [
-        ['youtube', rest_api_handler('https://www.wikipedia.org/', 'https://www.wikipedia.org/')],
-        ['kitchen lights', rest_api_handler('https://1.1.1.1', 'https://1.1.1.1')],
+        ['Monitors', monitors('https://www.wikipedia.org/', 'https://www.wikipedia.org/')],
+        ['Fan', attic_fans('https://1.1.1.1', 'https://1.1.1.1')],
+	['Landing Light', landing_lamp('https://1.1.1.1', 'https://1.1.1.1')],
 ]
 
 
