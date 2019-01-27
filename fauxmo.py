@@ -366,12 +366,12 @@ class monitors(object):
 
     def on(self):
         r = requests.get(self.on_cmd)
-        os.system('sudo /home/acawley/433MHz/433Utils/RPi_utils/codesend 4706319')
+        os.system('sudo /home/acawley/433MHz/433Utils/RPi_utils/codesend 4706319 &')
         return r.status_code == 200
 
     def off(self):
         r = requests.get(self.off_cmd)
-        os.system('sudo /home/acawley/433MHz/433Utils/RPi_utils/codesend 4706311')
+        os.system('sudo /home/acawley/433MHz/433Utils/RPi_utils/codesend 4706311 &')
         return r.status_code == 200
 
 class attic_fans(object):
@@ -381,12 +381,12 @@ class attic_fans(object):
 
     def on(self):
         r = requests.get(self.on_cmd)
-        os.system('sudo /home/acawley/433MHz/433Utils/RPi_utils/codesend 4706315')
+        os.system('sudo /home/acawley/433MHz/433Utils/RPi_utils/codesend 4706315 &')
         return r.status_code == 200
 
     def off(self):
         r = requests.get(self.off_cmd)
-        os.system('sudo /home/acawley/433MHz/433Utils/RPi_utils/codesend 4706307')
+        os.system('sudo /home/acawley/433MHz/433Utils/RPi_utils/codesend 4706307 &')
         return r.status_code == 200
 
 class landing_lamp(object):
@@ -396,12 +396,12 @@ class landing_lamp(object):
 
     def on(self):
         r = requests.get(self.on_cmd)
-        os.system('sudo /home/acawley/433MHz/433Utils/RPi_utils/codesend 4706317')
+        os.system('sudo /home/acawley/433MHz/433Utils/RPi_utils/codesend 4706317 &')
         return r.status_code == 200
 
     def off(self):
         r = requests.get(self.off_cmd)
-        os.system('sudo /home/acawley/433MHz/433Utils/RPi_utils/codesend 4706309')
+        os.system('sudo /home/acawley/433MHz/433Utils/RPi_utils/codesend 4706309 &')
         return r.status_code == 200
 
 
