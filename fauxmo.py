@@ -359,6 +359,8 @@ class upnp_broadcast_responder(object):
 # This example class takes two full URLs that should be requested when an on
 # and off command are invoked respectively. It ignores any return data.
 
+
+##### Monitors #####
 class monitors(object):
     def __init__(self, on_cmd, off_cmd):
         self.on_cmd = on_cmd
@@ -366,14 +368,50 @@ class monitors(object):
 
     def on(self):
         r = requests.get(self.on_cmd)
-        os.system('sudo /home/acawley/433MHz/433Utils/RPi_utils/codesend 4706319 &')
+        os.system('sudo /home/acawley/433MHz/433Utils/RPi_utils/codesend 4543795 0 170 &')
         return r.status_code == 200
 
     def off(self):
         r = requests.get(self.off_cmd)
-        os.system('sudo /home/acawley/433MHz/433Utils/RPi_utils/codesend 4706311 &')
+        os.system('sudo /home/acawley/433MHz/433Utils/RPi_utils/codesend 4543804 0 170 &')
         return r.status_code == 200
 
+
+##### Living Room Lamps #####
+class living_room_lamps(object):
+    def __init__(self, on_cmd, off_cmd):
+        self.on_cmd = on_cmd
+        self.off_cmd = off_cmd
+
+    def on(self):
+        r = requests.get(self.on_cmd)
+        os.system('sudo /home/acawley/433MHz/433Utils/RPi_utils/codesend 4545795 0 170 && sudo /home/acawley/433MHz/433Utils/RPi_utils/codesend 4544259 0 170')
+        return r.status_code == 200
+
+    def off(self):
+        r = requests.get(self.off_cmd)
+        os.system('sudo /home/acawley/433MHz/433Utils/RPi_utils/codesend 4544268 0 170 && sudo /home/acawley/433MHz/433Utils/RPi_utils/codesend 4545804 0 170')
+        return r.status_code == 200
+
+
+##### Outdoor Lights #####
+class outdoor_lights(object):
+    def __init__(self, on_cmd, off_cmd):
+        self.on_cmd = on_cmd
+        self.off_cmd = off_cmd
+
+    def on(self):
+        r = requests.get(self.on_cmd)
+        os.system('sudo /home/acawley/433MHz/433Utils/RPi_utils/codesend 4551939 0 170 &')
+        return r.status_code == 200
+
+    def off(self):
+        r = requests.get(self.off_cmd)
+        os.system('sudo /home/acawley/433MHz/433Utils/RPi_utils/codesend 4551948 0 170 &')
+        return r.status_code == 200
+
+
+##### Attic Fans #####
 class attic_fans(object):
     def __init__(self, on_cmd, off_cmd):
         self.on_cmd = on_cmd
@@ -389,20 +427,38 @@ class attic_fans(object):
         os.system('sudo /home/acawley/433MHz/433Utils/RPi_utils/codesend 4706307 &')
         return r.status_code == 200
 
-class landing_lamp(object):
+##### Landing Light #####
+class landing_light(object):
     def __init__(self, on_cmd, off_cmd):
         self.on_cmd = on_cmd
         self.off_cmd = off_cmd
 
     def on(self):
         r = requests.get(self.on_cmd)
-        os.system('sudo /home/acawley/433MHz/433Utils/RPi_utils/codesend 4706317 &')
+        os.system('sudo /home/acawley/433MHz/433Utils/RPi_utils/codesend 4543939 0 170 &')
         return r.status_code == 200
 
     def off(self):
         r = requests.get(self.off_cmd)
-        os.system('sudo /home/acawley/433MHz/433Utils/RPi_utils/codesend 4706309 &')
+        os.system('sudo /home/acawley/433MHz/433Utils/RPi_utils/codesend 4543948 0 170 &')
         return r.status_code == 200
+
+##### Dog Mode #####
+class dog_mode(object):
+    def __init__(self, on_cmd, off_cmd):
+        self.on_cmd = on_cmd
+        self.off_cmd = off_cmd
+
+    def on(self):
+        r = requests.get(self.on_cmd)
+        os.system('sudo /home/acawley/433MHz/433Utils/RPi_utils/codesend 4543939 0 170 && sleep 2 && sudo /home/acawley/433MHz/433Utils/RPi_utils/codesend 4545795 0 170 && sleep 2 && sudo /home/acawley/433MHz/433Utils/RPi_utils/codesend 4551939 0 170 &')
+        return r.status_code == 200
+
+    def off(self):
+        r = requests.get(self.off_cmd)
+        os.system('bash /home/acawley/433MHz/433Utils/RPi_utils/dog-mode-off.sh &')
+        return r.status_code == 200
+
 
 
 # Each entry is a list with the following elements:
@@ -417,8 +473,12 @@ class landing_lamp(object):
 
 FAUXMOS = [
         ['Monitors', monitors('https://www.wikipedia.org/', 'https://www.wikipedia.org/')],
+        ['Landing Light', landing_light('https://www.wikipedia.org/', 'https://www.wikipedia.org/')],
+        ['Living Room Lamps', living_room_lamps('https://www.wikipedia.org/', 'https://www.wikipedia.org/')],
+        ['Outdoor Lights', outdoor_lights('https://www.wikipedia.org/', 'https://www.wikipedia.org/')],
         ['Fan', attic_fans('https://1.1.1.1', 'https://1.1.1.1')],
-	['Landing Light', landing_lamp('https://1.1.1.1', 'https://1.1.1.1')],
+	['Landing Light', landing_light('https://1.1.1.1', 'https://1.1.1.1')],
+        ['Dog Mode', dog_mode('https://1.1.1.1', 'https://1.1.1.1')],
 ]
 
 
