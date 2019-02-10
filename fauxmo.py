@@ -459,6 +459,21 @@ class dog_mode(object):
         os.system('bash /home/acawley/433MHz/433Utils/RPi_utils/dog-mode-off.sh &')
         return r.status_code == 200
 
+##### Attic Lamp #####
+class attic_lamp(object):
+    def __init__(self, on_cmd, off_cmd):
+        self.on_cmd = on_cmd
+        self.off_cmd = off_cmd
+
+    def on(self):
+        r = requests.get(self.on_cmd)
+        os.system('sudo /home/acawley/433MHz/433Utils/RPi_utils/codesend 4706319 &')
+        return r.status_code == 200
+
+    def off(self):
+        r = requests.get(self.off_cmd)
+        os.system('sudo /home/acawley/433MHz/433Utils/RPi_utils/codesend 4706311 &')
+        return r.status_code == 200
 
 
 # Each entry is a list with the following elements:
@@ -478,6 +493,7 @@ FAUXMOS = [
         ['Outdoor Lights', outdoor_lights('https://www.wikipedia.org/', 'https://www.wikipedia.org/')],
         ['Fan', attic_fans('https://1.1.1.1', 'https://1.1.1.1')],
         ['Dog Mode', dog_mode('https://1.1.1.1', 'https://1.1.1.1')],
+	['Attic Lamp', attic_lamp('https://www.wikipedia.org/', 'https://www.wikipedia.org/')],	
 ]
 
 
