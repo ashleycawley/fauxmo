@@ -477,7 +477,6 @@ FAUXMOS = [
         ['Living Room Lamps', living_room_lamps('https://www.wikipedia.org/', 'https://www.wikipedia.org/')],
         ['Outdoor Lights', outdoor_lights('https://www.wikipedia.org/', 'https://www.wikipedia.org/')],
         ['Fan', attic_fans('https://1.1.1.1', 'https://1.1.1.1')],
-	['Landing Light', landing_light('https://1.1.1.1', 'https://1.1.1.1')],
         ['Dog Mode', dog_mode('https://1.1.1.1', 'https://1.1.1.1')],
 ]
 
