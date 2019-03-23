@@ -411,8 +411,8 @@ class outdoor_lights(object):
         return r.status_code == 200
 
 
-##### Attic Fans #####
-class attic_fans(object):
+##### Printer #####
+class printer(object):
     def __init__(self, on_cmd, off_cmd):
         self.on_cmd = on_cmd
         self.off_cmd = off_cmd
@@ -491,7 +491,7 @@ FAUXMOS = [
         ['Landing Light', landing_light('https://www.wikipedia.org/', 'https://www.wikipedia.org/')],
         ['Living Room Lamps', living_room_lamps('https://www.wikipedia.org/', 'https://www.wikipedia.org/')],
         ['Outdoor Lights', outdoor_lights('https://www.wikipedia.org/', 'https://www.wikipedia.org/')],
-        ['Fan', attic_fans('https://1.1.1.1', 'https://1.1.1.1')],
+        ['Printer', printer('https://1.1.1.1', 'https://1.1.1.1')],
         ['Dog Mode', dog_mode('https://1.1.1.1', 'https://1.1.1.1')],
 	['Attic Lamp', attic_lamp('https://www.wikipedia.org/', 'https://www.wikipedia.org/')],	
 ]
