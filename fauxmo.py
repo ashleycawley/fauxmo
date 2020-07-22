@@ -394,21 +394,21 @@ class living_room_lamps(object):
         return r.status_code == 200
 
 
-###### Shed #####
-class shed(object):
-    def __init__(self, on_cmd, off_cmd):
-        self.on_cmd = on_cmd
-        self.off_cmd = off_cmd
+# ###### Shed #####
+# class shed(object):
+#     def __init__(self, on_cmd, off_cmd):
+#         self.on_cmd = on_cmd
+#         self.off_cmd = off_cmd
 
-    def on(self):
-        r = requests.get(self.on_cmd)
-        os.system('/bin/bash /home/pi/fauxmo/on-shed.sh &')
-        return r.status_code == 200
+#     def on(self):
+#         r = requests.get(self.on_cmd)
+#         os.system('/bin/bash /home/pi/fauxmo/on-shed.sh &')
+#         return r.status_code == 200
 
-    def off(self):
-        r = requests.get(self.off_cmd)
-        os.system('/bin/bash /home/pi/fauxmo/off-shed.sh &')
-        return r.status_code == 200
+#     def off(self):
+#         r = requests.get(self.off_cmd)
+#         os.system('/bin/bash /home/pi/fauxmo/off-shed.sh &')
+#         return r.status_code == 200
 
 
 ##### Old Printer - Printer Alan #####
@@ -460,69 +460,69 @@ class landing_light(object):
         os.system('/bin/bash /home/pi/fauxmo/off-landing-light.sh &')
         return r.status_code == 200
 
-##### Dog Mode #####
-class dog_mode(object):
-    def __init__(self, on_cmd, off_cmd):
-        self.on_cmd = on_cmd
-        self.off_cmd = off_cmd
+# ##### Dog Mode #####
+# class dog_mode(object):
+#     def __init__(self, on_cmd, off_cmd):
+#         self.on_cmd = on_cmd
+#         self.off_cmd = off_cmd
 
-    def on(self):
-        r = requests.get(self.on_cmd)
-        os.system('sudo /home/pi/433Utils/RPi_utils/codesend 4543939 0 170 && sleep 2 && sudo /home/pi/433Utils/RPi_utils/codesend 4545795 0 170 && sleep 2 && sudo /home/pi/433Utils/RPi_utils/codesend 4551939 0 170 &')
-        return r.status_code == 200
+#     def on(self):
+#         r = requests.get(self.on_cmd)
+#         os.system('sudo /home/pi/433Utils/RPi_utils/codesend 4543939 0 170 && sleep 2 && sudo /home/pi/433Utils/RPi_utils/codesend 4545795 0 170 && sleep 2 && sudo /home/pi/433Utils/RPi_utils/codesend 4551939 0 170 &')
+#         return r.status_code == 200
 
-    def off(self):
-        r = requests.get(self.off_cmd)
-        os.system('bash /home/pi/433Utils/RPi_utils/dog-mode-off.sh &')
-        return r.status_code == 200
+#     def off(self):
+#         r = requests.get(self.off_cmd)
+#         os.system('bash /home/pi/433Utils/RPi_utils/dog-mode-off.sh &')
+#         return r.status_code == 200
 
-##### Christmas Tree #####
-class christmas_tree(object):
-    def __init__(self, on_cmd, off_cmd):
-        self.on_cmd = on_cmd
-        self.off_cmd = off_cmd
+# ##### Christmas Tree #####
+# class christmas_tree(object):
+#     def __init__(self, on_cmd, off_cmd):
+#         self.on_cmd = on_cmd
+#         self.off_cmd = off_cmd
 
-    def on(self):
-        r = requests.get(self.on_cmd)
-        os.system('sudo /home/pi/433Utils/RPi_utils/codesend 4706319 &')
-        return r.status_code == 200
+#     def on(self):
+#         r = requests.get(self.on_cmd)
+#         os.system('sudo /home/pi/433Utils/RPi_utils/codesend 4706319 &')
+#         return r.status_code == 200
 
-    def off(self):
-        r = requests.get(self.off_cmd)
-        os.system('sudo /home/pi/433Utils/RPi_utils/codesend 4706311 &')
-        return r.status_code == 200
+#     def off(self):
+#         r = requests.get(self.off_cmd)
+#         os.system('sudo /home/pi/433Utils/RPi_utils/codesend 4706311 &')
+#         return r.status_code == 200
 
-##### Window Lights #####
-class window_lights(object):
-    def __init__(self, on_cmd, off_cmd):
-        self.on_cmd = on_cmd
-        self.off_cmd = off_cmd
+# ##### Window Lights #####
+# class window_lights(object):
+#     def __init__(self, on_cmd, off_cmd):
+#         self.on_cmd = on_cmd
+#         self.off_cmd = off_cmd
 
-    def on(self):
-        r = requests.get(self.on_cmd)
-        os.system('sudo /home/pi/433Utils/RPi_utils/codesend 4706317 &')
-        return r.status_code == 200
+#     def on(self):
+#         r = requests.get(self.on_cmd)
+#         os.system('sudo /home/pi/433Utils/RPi_utils/codesend 4706317 &')
+#         return r.status_code == 200
 
-    def off(self):
-        r = requests.get(self.off_cmd)
-        os.system('sudo /home/pi/433Utils/RPi_utils/codesend 4706309 &')
-        return r.status_code == 200
+#     def off(self):
+#         r = requests.get(self.off_cmd)
+#         os.system('sudo /home/pi/433Utils/RPi_utils/codesend 4706309 &')
+#         return r.status_code == 200
 
-##### Shed Alarm #####
-class shed_alarm(object):
-    def __init__(self, on_cmd, off_cmd):
-        self.on_cmd = on_cmd
-        self.off_cmd = off_cmd
+# ##### Shed Alarm #####
+# class shed_alarm(object):
+#     def __init__(self, on_cmd, off_cmd):
+#         self.on_cmd = on_cmd
+#         self.off_cmd = off_cmd
 
-    def on(self):
-        r = requests.get(self.on_cmd)
-        os.system('/bin/bash /home/pi/fauxmo/on-shed-alarm.sh &')
-        return r.status_code == 200
+#     def on(self):
+#         r = requests.get(self.on_cmd)
+#         os.system('/bin/bash /home/pi/fauxmo/on-shed-alarm.sh &')
+#         return r.status_code == 200
 
-    def off(self):
-        r = requests.get(self.off_cmd)
-        os.system('/bin/bash /home/pi/fauxmo/off-shed-alarm.sh &')
-        return r.status_code == 200
+#     def off(self):
+#         r = requests.get(self.off_cmd)
+#         os.system('/bin/bash /home/pi/fauxmo/off-shed-alarm.sh &')
+#         return r.status_code == 200
 
 # Each entry is a list with the following elements:
 #
@@ -538,12 +538,12 @@ FAUXMOS = [
         ['Monitors', monitors('https://www.wikipedia.org/', 'https://www.wikipedia.org/')],
         ['Landing Light', landing_light('https://www.wikipedia.org/', 'https://www.wikipedia.org/')],
         ['Living Room Lamps', living_room_lamps('https://www.wikipedia.org/', 'https://www.wikipedia.org/')],
-        ['Shed', shed('https://www.wikipedia.org/', 'https://www.wikipedia.org/')],
+#        ['Shed', shed('https://www.wikipedia.org/', 'https://www.wikipedia.org/')],
         ['Printer Alan', printer('https://www.wikipedia.org/', 'https://www.wikipedia.org/')],
-        ['Dog Mode', dog_mode('https://www.wikipedia.org/', 'https://www.wikipedia.org/')],
+#       ['Dog Mode', dog_mode('https://www.wikipedia.org/', 'https://www.wikipedia.org/')],
 	['Printer Bill', new_printer('https://www.wikipedia.org/', 'https://www.wikipedia.org/')],	
-	['Window Lights', window_lights('https://www.wikipedia.org/', 'https://www.wikipedia.org/')],
-        ['Shed Alarm', shed_alarm('https://www.wikipedia.org/', 'https://www.wikipedia.org/')],
+#	['Window Lights', window_lights('https://www.wikipedia.org/', 'https://www.wikipedia.org/')],
+#        ['Shed Alarm', shed_alarm('https://www.wikipedia.org/', 'https://www.wikipedia.org/')],
 ]
 
 if len(sys.argv) > 1 and sys.argv[1] == '-d':
