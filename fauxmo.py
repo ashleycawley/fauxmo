@@ -492,21 +492,21 @@ class landing_light(object):
 #         os.system('sudo /home/pi/433Utils/RPi_utils/codesend 4706311 &')
 #         return r.status_code == 200
 
-# ##### Window Lights #####
-# class window_lights(object):
-#     def __init__(self, on_cmd, off_cmd):
-#         self.on_cmd = on_cmd
-#         self.off_cmd = off_cmd
+# ##### Shed Light #####
+class shed_light(object):
+     def __init__(self, on_cmd, off_cmd):
+         self.on_cmd = on_cmd
+         self.off_cmd = off_cmd
 
-#     def on(self):
-#         r = requests.get(self.on_cmd)
-#         os.system('sudo /home/pi/433Utils/RPi_utils/codesend 4706317 &')
-#         return r.status_code == 200
+     def on(self):
+         r = requests.get(self.on_cmd)
+         os.system('sudo /home/pi/433Utils/RPi_utils/codesend 4706317 &')
+         return r.status_code == 200
 
-#     def off(self):
-#         r = requests.get(self.off_cmd)
-#         os.system('sudo /home/pi/433Utils/RPi_utils/codesend 4706309 &')
-#         return r.status_code == 200
+     def off(self):
+         r = requests.get(self.off_cmd)
+         os.system('sudo /home/pi/433Utils/RPi_utils/codesend 4706309 &')
+         return r.status_code == 200
 
 # ##### Shed Alarm #####
 # class shed_alarm(object):
@@ -542,7 +542,7 @@ FAUXMOS = [
         ['Printer Alan', printer('https://www.wikipedia.org/', 'https://www.wikipedia.org/')],
 #       ['Dog Mode', dog_mode('https://www.wikipedia.org/', 'https://www.wikipedia.org/')],
 	['Printer Bill', new_printer('https://www.wikipedia.org/', 'https://www.wikipedia.org/')],	
-#	['Window Lights', window_lights('https://www.wikipedia.org/', 'https://www.wikipedia.org/')],
+	['Shed Light', shed_light('https://www.wikipedia.org/', 'https://www.wikipedia.org/')],
 #        ['Shed Alarm', shed_alarm('https://www.wikipedia.org/', 'https://www.wikipedia.org/')],
 ]
 
