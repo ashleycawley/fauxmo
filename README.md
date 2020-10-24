@@ -3,6 +3,8 @@
 
 **On Raspbian Stretch python-requests is required** this can be installed with: `sudo apt-get install python-requests`
 
+**Install better random number generator** this is to improve the reliability of starting fauxmo automatically after boot: `sudo apt-get install rng-tools`
+
 **This fork is designed to allow you to easily trigger your own Bash Shell Scripts by using your voice with Alexa**
 
 Visit [this Maker Musings article](http://www.makermusings.com/2015/07/13/amazon-echo-and-home-automation/) to learn more about using this code to integrate
